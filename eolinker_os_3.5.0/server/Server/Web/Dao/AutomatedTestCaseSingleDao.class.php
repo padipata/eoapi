@@ -35,12 +35,6 @@ class AutomatedTestCaseSingleDao
     public function addSingleTestCase(&$case_id, &$case_data, &$case_code, &$status_code, &$match_type, &$match_rule, &$api_name, &$api_uri, &$api_request_type, &$order_number)
     {
         $db = getDatabase();
-        if ($order_number === 0) {
-            $max_order_number = $db->prepareExecute('SELECT MAX(eo_project_test_case_single.orderNumber) AS number FROM eo_project_test_case_single WHERE eo_project_test_case_single.caseID = ?;', array(
-                $case_id
-            ));
-            $order_number = ($max_order_number['number'] ? $max_order_number['number'] : 0) + 1;
-        }
         $db->prepareExecute('INSERT INTO eo_project_test_case_single(eo_project_test_case_single.caseID,eo_project_test_case_single.caseData,eo_project_test_case_single.caseCode,eo_project_test_case_single.statusCode,eo_project_test_case_single.matchType,eo_project_test_case_single.matchRule, eo_project_test_case_single.apiName, eo_project_test_case_single.apiURI, eo_project_test_case_single.apiRequestType,eo_project_test_case_single.orderNumber) VALUES (?,?,?,?,?,?,?,?,?,?);', array(
             $case_id,
             $case_data,
@@ -108,7 +102,7 @@ class AutomatedTestCaseSingleDao
         $index = 1;
         if (is_array($result)) {
             foreach ($result as &$single_case) {
-                if (($single_case['orderNumber'] === NULL && $index == 1) || $index > 1) {
+                if (($single_case['orderNumber'] == NULL && $index == 1) || $index > 1) {
                     if (preg_match_all('#<response\[(\d+)\]#', $single_case['caseData'], $match) > 0) {
                         foreach ($match[1] as $response_id) {
                             $single_case['caseData'] = str_replace("<response[" . $response_id, "<response[" . $result[$i]['connID'], $single_case['caseData']);
@@ -134,7 +128,7 @@ class AutomatedTestCaseSingleDao
         }
         if ($result) {
             $db->commit();
-            return $result;
+            return array_reverse($result);
         } else {
             $db->rollback();
             return FALSE;
@@ -194,7 +188,7 @@ class AutomatedTestCaseSingleDao
             }
         }
         if ($result)
-            return $result;
+            return array_reverse($result);
         else
             return FALSE;
     }

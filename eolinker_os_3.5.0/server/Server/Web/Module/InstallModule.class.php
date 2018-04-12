@@ -52,7 +52,7 @@ class InstallModule
                 $result['fileWrite'] = 0;
         } catch (\Exception $e) {
             $result['fileWrite'] = '0';
-            $result['fileWriteError'] = strval($e->getMessage());
+            $result['fileWriteError'] = $e->getMessage();
         }
         //检测数据库连接
         try {
@@ -68,14 +68,14 @@ class InstallModule
                     $result['db'] = 1;
                     //检测数据库是否有内容(已经安装过)
                     $stat = $con->query("SELECT * FROM eo_user;");
-                    if ($stat) {
-                        $table_name = $stat->fetch(\PDO::FETCH_ASSOC);
+                    if($stat) {
+                        $table_name = $stat -> fetch(\PDO::FETCH_ASSOC);
                         if ($table_name) {
                             $result['isInstalled'] = 1;
                         } else {
                             $result['isInstalled'] = 0;
                         }
-                    } else {
+                    }else{
                         $result['isInstalled'] = 0;
                     }
                 } else {
@@ -84,7 +84,7 @@ class InstallModule
             }
         } catch (\Exception $e) {
             $result['db'] = 0;
-            $result['dbError'] = strval($e->getMessage());
+            $result['dbError'] = $e->getMessage();
         }
         //检测CURL
         try {
@@ -100,7 +100,7 @@ class InstallModule
             }
         } catch (\Exception $e) {
             $result['curl'] = 0;
-            $result['curlError'] = strval($e->getMessage());
+            $result['curlError'] = $e->getMessage();
         }
         //检测mbString
         try {
@@ -116,7 +116,7 @@ class InstallModule
             }
         } catch (\Exception $e) {
             $result['mbString'] = 0;
-            $result['mbStringError'] = strval($e->getMessage());
+            $result['mbStringError'] = $e->getMessage();
         }
         //检测session路径写入权限
         try {
@@ -132,7 +132,7 @@ class InstallModule
             }
         } catch (\Exception $e) {
             $result['sessionPath'] = 0;
-            $result['sessionPathError'] = strval($e->getMessage());
+            $result['sessionPathError'] = $e->getMessage();
         }
 
         return $result;

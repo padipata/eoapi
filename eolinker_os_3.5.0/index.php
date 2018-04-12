@@ -19,7 +19,7 @@ defined('WEBSITE_NAME') or define('WEBSITE_NAME', 'eoLinker接口管理工具开
     <link href="assets/images/favicon.ico" rel="shortcut icon">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="stylesheet" href="styles/app-4273e65e06.css">
+    <link rel="stylesheet" href="styles/app-c54662e77c.css">
     <script>
         var allowRegister =<?php echo ALLOW_REGISTER ? 'true' : 'false'; ?>;
         var allowUpdate =<?php echo ALLOW_UPDATE ? 'true' : 'false'; ?>;
@@ -46,5 +46,5 @@ defined('WEBSITE_NAME') or define('WEBSITE_NAME', 'eoLinker接口管理工具开
 <eo-modal></eo-modal>
 </body>
 <script id="plug-inner-script"></script>
-<script src="scripts/app-1ee7ea79f2.js"></script>
+<script src="scripts/app-923417719b.js"></script>
 </html>
