@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eoLinker接口测试增强插件</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/CodeDoc.css">
+</head>
+<body>
+    <header>
+        <h2>eoLinker 自动化测试插件-选项</h2>
+    </header>
+    <article>
+        <div class="tab-one">
+            <div class="menu-box">
+                <a class="btn-doc btn-top elem-active">识别代码注释生成文档</a>
+                <a class="btn-update btn-top">关于/更新</a>
+            </div>
+            <form name="codeForm" id="codeForm" enctype=multipart/form-data>
+                <ul class="ul-form">
+                    <li>
+                        <label>版本选择</label>
+                        <ul class="radio-ul radio-type">
+                            <li class="item-li">
+                                <input class="" type="radio" name="Product_type" value="0" id="Product_type-0" checked>
+                                <span class="single-option"></span>
+                                <label for="Product_type-0">线上版本</label>
+                            </li>
+                            <li class="item-li">
+                                <input class="" type="radio" name="Product_type" value="1" id="Product_type-1">
+                                <span class="single-option"></span>
+                                <label for="Product_type-1">开源版本</label>
+                            </li>
+                            <li class="item-li">
+                                <input class="" type="radio" name="Product_type" value="2" id="Product_type-2">
+                                <span class="single-option"></span>
+                                <label for="Product_type-2">独立部署版本</label>
+                            </li>
+                        </ul>
+                        <li class="server-location hidden">
+                            <label for="Server-location">服务器地址</label>
+                            <input type="text" id="Server-location" placeholder="请输入服务器地址" required>
+                        </li>
+                        <li>
+                            <label for="Project_key">Project_key</label>
+                            <input type="text" id="Project_key" placeholder="请输入Project_key" required>
+                        </li>
+                        <li class="secret_key">
+                            <label for="Secret_key">Secret_key</label>
+                            <input type="text" name="Secret_key" id="Secret_key" placeholder="请输入Secret_key" required>
+                        </li>
+                        <li>
+                            <label>代码文件夹选择</label>
+                            <input type="file" id="code_file" webkitdirectory directory multiple required/>
+                            <input type="text" id="file-text" placeholder="请选择文件夹">
+                            <label for="code_file" class="label-file">上传文件夹</label>
+                        </li>
+                        <li>
+                            <label for="language_select">代码语言</label>
+                            <select id="language_select">
+                                <option>php</option>
+                                <option>java</option>
+                                <option>python</option>
+                                <option>其他</option>
+                            </select>
+                        </li>
+                        <li class="file-suffix-box hidden">
+                            <label for="file-suffix">其他语言（请填写文件后缀名）</label>
+                            <input type="text" id="file-suffix" placeholder="请填写文件后缀名,例如cs" required>
+                        </li>
+                        <li>
+                            <label for="exclude_file">排除文件（文件之间换行）</label>
+                            <textarea class="area_exclude_file" id="exclude_file" placeholder="[选填]例如config.php"></textarea>
+                        </li>
+                        <li>
+                            <label class="open-name hidden" for="user_name">eoLinker开源版账户（用户名）</label>
+                            <label for="user_name" class="web-name">eoLinker账户（手机号、邮箱、用户名）</label>
+                            <input type="text" id="user_name" placeholder="请输入eoLinker账户" required>
+                        </li>
+                        <li class="li-psw">
+                            <label class="open-psw hidden" for="user_psw">eoLinker开源版账户密码</label>
+                            <label class="web-psw" for="user_psw">eoLinker账户密码</label>
+                            <input type="password" id="user_psw" placeholder="请输入eoLinker账户密码" maxlength="32" required>
+                            <span class="icon-style icon-close-eye hidden"><img src="../images/close-eye.png"></span>
+                            <span class="icon-style icon-eye "><img src="../images/eye.png "></span>
+                        </li>
+                </ul>
+                <button id="btn-submit" class="btn-submit">生成</button>
+                <button id="btn-save">保存</button>
+            </form>
+        </div>
+        <div class="tab-two hidden">
+            <div class="menu-box">
+                <a class="btn-doc btn-top">识别代码注释生成文档</a>
+                <a class="btn-update btn-top  elem-active">关于/更新</a>
+            </div>
+            <div class="content-box">
+                <h4>关于eoLinker</h4>
+                <p>广州银云信息科技有限公司（eoLinker-Easy And Open Linker）是国内最大的在线接口管理服务方案供应商。</p>
+                <p>eoLinker通过帮助企业开发人员管理接口文档，进行自动化测试，团队协作等，提高企业项目的接口管理水平，提升开发速度并且降低运维成本</p>
+                <h4 class="h4-update">更新：当前版本 V2.0.7</h4>
+                <a class="btn-about-update" href="https://www.eolinker.com/#/plug/introduce" target="_blank">获取更新</a>
+            </div>
+        </div>
+        <div class="modal hidden">
+            <div class="InfoModal">
+                
+            </div>
+        </div>
+        <div class="wrap hidden">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        </div>
+    </article>
+    <script type="text/javascript" src="../js/libs/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/bundle/codeDoc.min.js"></script>
+</body>
+
+</html>
